@@ -1,0 +1,51 @@
+// ---------------------------  tooltip 提示 -------------------
+$placement-list: ('top', 'right', 'bottom', 'left');
+
+@each $item in $placement-list {
+	// light arrow
+	.ivu-tooltip-light.ivu-tooltip-popper[x-placement^='#{$item}']
+		.ivu-tooltip-arrow {
+		// arrow border
+		@include set-background {
+			border-#{$item}-color: get-bg-changed-variable(
+				'color-border-default'
+			);
+		}
+
+		// arrow background
+		&:after {
+			@include set-background {
+				border-#{$item}-color: get-bg-changed-variable(
+					'color-container-bg-popup'
+				);
+			}
+		}
+	}
+
+	// dark , default arrow
+	.ivu-tooltip-popper[x-placement^='#{$item}'] .ivu-tooltip-arrow {
+		@include set-background {
+			border-#{$item}-color: get-bg-changed-variable(
+				'color-container-bg-popup'
+			);
+		}
+	}
+}
+
+// 激活的文字
+.ivu-tooltip-rel {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+// 激活的弹窗
+.ivu-tooltip-inner {
+	padding: 8px 16px;
+
+	@include set-background {
+		color: get-bg-changed-variable('color-text-regular');
+		background-color: get-bg-changed-variable('color-container-bg-popup');
+		box-shadow: get-bg-changed-variable('shadow-default');
+	}
+}

@@ -1,0 +1,7 @@
+.ivu-badge-count {
+	border: none;
+	border-radius: 4px;
+	background: $color-func-danger;
+	box-shadow: none;
+	@include height-lh(24px);
+}

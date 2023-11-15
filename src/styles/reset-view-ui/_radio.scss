@@ -1,0 +1,194 @@
+// ----------------------- 单选按钮 ---------------------------
+.ivu-radio-wrapper {
+	margin-right: 24px;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+// circle-radio default
+.ivu-radio-inner {
+	// @include size(20px);
+
+	@include set-background(true) {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	&:after {
+		// left: 3px;
+		// top: 3px;
+
+		@include set-theme {
+			background-color: get-themed-variable('color-theme-primary');
+		}
+	}
+}
+
+// hover 时外环与默认一致
+.ivu-radio:hover .ivu-radio-inner {
+	@include set-background(true) {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+	}
+}
+
+// focus reset
+.ivu-radio:focus,
+.ivu-radio-inner:focus,
+.ivu-radio-focus {
+	outline: none;
+	box-shadow: none;
+}
+
+// checked
+.ivu-radio-checked,
+.ivu-radio-checked:hover {
+	.ivu-radio-inner {
+		@include set-theme {
+			border: 1px solid get-themed-variable('color-theme-primary');
+		}
+	}
+}
+
+// disabled
+.ivu-radio-wrapper-disabled {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+.ivu-radio-disabled {
+	// disabled default
+	.ivu-radio-inner {
+		@include set-background(true) {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+	}
+
+	// diabled checked
+	&.ivu-radio-checked .ivu-radio-inner {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-disable');
+		}
+
+		&:after {
+			@include set-theme {
+				background-color: get-themed-variable('color-theme-disable');
+			}
+		}
+	}
+}
+
+// button radio
+.ivu-radio-group-button {
+	// default
+	.ivu-radio-wrapper {
+		@include set-background(true) {
+			border-color: get-bg-changed-variable('color-border-default');
+			background-color: get-bg-changed-variable(
+				'color-container-bg-default'
+			);
+		}
+
+		// left border
+		&:before {
+			@include set-background(true) {
+				background-color: get-bg-changed-variable(
+					'color-border-default'
+				);
+			}
+		}
+
+		&:hover {
+			@include set-theme {
+				color: get-themed-variable('color-theme-primary');
+			}
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	// checked
+	.ivu-radio-wrapper-checked:before {
+		@include set-theme {
+			background: get-themed-variable('color-theme-primary');
+		}
+	}
+
+	.ivu-radio-wrapper-checked,
+	.ivu-radio-wrapper-checked:hover {
+		@include set-theme {
+			background: $transparent;
+			box-shadow: -1px 0 0 0 get-themed-variable('color-theme-primary'); // left border
+			color: get-themed-variable('color-theme-primary');
+			border-color: get-themed-variable('color-theme-primary');
+		}
+	}
+
+	.ivu-radio-wrapper-checked:first-child,
+	.ivu-radio-wrapper-checked:first-child:hover {
+		box-shadow: none;
+	}
+
+	// focus
+	.ivu-radio-focus {
+		@include set-theme {
+			box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+		}
+	}
+
+	.ivu-radio-wrapper-checked.ivu-radio-focus:first-child {
+		@include set-theme {
+			box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow'); // outline shaodow
+		}
+	}
+
+	.ivu-radio-wrapper-checked.ivu-radio-focus {
+		@include set-theme {
+			// border-left and shadow
+			box-shadow: -1px 0 0 0 get-themed-variable('color-theme-primary'),
+				0 0 0 2px get-themed-variable('color-theme-shadow');
+		}
+	}
+
+	.ivu-radio-wrapper-checked.ivu-radio-focus:after {
+		@include set-theme {
+			background: get-themed-variable(
+				'color-theme-shadow'
+			); // shadow-left
+		}
+	}
+
+	// disabled
+	.ivu-radio-wrapper-disabled {
+		@include set-background(true) {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+
+		&:first-child,
+		&:hover {
+			@include set-background(true) {
+				color: get-bg-changed-variable('color-text-disable');
+			}
+
+			@include set-background(true) {
+				border-color: get-bg-changed-variable('color-border-default');
+			}
+		}
+
+		// disbaled checked
+		&.ivu-radio-wrapper-checked,
+		&.ivu-radio-wrapper-checked:hover {
+			@include set-background(true) {
+				color: get-bg-changed-variable('color-text-disable');
+			}
+		}
+	}
+}

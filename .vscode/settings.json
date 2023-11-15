@@ -1,0 +1,14 @@
+{
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "vetur.validation.template": false,
+    "eslint.format.enable": true,
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "vue"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}

@@ -1,0 +1,139 @@
+// ------------------------------  分页  ------------------------------
+.ivu-page {
+	font-size: $font-size-small;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+.ivu-page-total {
+	@include height-lh(24px);
+}
+
+.ivu-page-item {
+	padding: 0 5px;
+}
+
+// 每个小块
+.ivu-page-item-jump-next,
+.ivu-page-item-jump-prev,
+.ivu-page-next,
+.ivu-page-prev,
+.ivu-page-item {
+	height: 24px;
+	min-width: 24px; // reset default
+	line-height: 22px; // 24 - 2border
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	a {
+		margin: 0;
+		font-size: 12px;
+
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-primary');
+		}
+	}
+
+	// hover
+	&:hover {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+
+		a,
+		i {
+			@include set-theme {
+				color: get-themed-variable('color-theme-secondary');
+			}
+		}
+	}
+
+	// disabled
+	&.ivu-page-disabled {
+		&,
+		&:hover {
+			@include set-background(true) {
+				border-color: get-bg-changed-variable('color-border-default');
+				background-color: get-bg-changed-variable(
+					'color-container-bg-disable'
+				);
+			}
+		}
+
+		a,
+		i {
+			@include set-background(true) {
+				color: get-bg-changed-variable('color-text-disable');
+			}
+		}
+	}
+}
+
+// active
+.ivu-page-item-active,
+.ivu-page-item-active:hover {
+	@include set-theme {
+		border-color: get-themed-variable('color-theme-primary');
+		background-color: get-themed-variable('color-theme-primary');
+
+		a {
+			color: $color-white-100;
+		}
+	}
+}
+
+// 每页展示多少项筛选条件
+.ivu-page-options .ivu-select-selection {
+	height: 24px;
+	background-color: $transparent;
+
+	@include set-background(true) {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+	}
+
+	.ivu-select-selected-value {
+		@include height-lh(24px);
+	}
+}
+
+// 跳转至多少页
+.ivu-page-options-elevator {
+	@include height-lh(24px);
+}
+
+.ivu-page-simple .ivu-page-simple-pager input,
+.ivu-page-options-elevator input {
+	width: 38px;
+	text-align: center;
+	@include height-lh(24px);
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	&:hover {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	&:focus {
+		@include set-theme {
+			box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+		}
+	}
+}
+
+// simple and mini
+.ivu-page.mini .ivu-page-disabled,
+.ivu-page-simple .ivu-page-disabled {
+	background-color: $transparent !important;
+}

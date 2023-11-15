@@ -1,0 +1,170 @@
+.ivu-select {
+	width: 100%;
+	outline: none;
+}
+
+// 默认的输入框宽度
+.default-select {
+	width: 320px;
+}
+
+// default font color
+.ivu-select,
+.ivu-select-arrow,
+.ivu-select-item {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+.ivu-select-placeholder {
+	text-align: left;
+}
+
+// icon
+.ivu-select-arrow {
+	@include set-background(true) {
+		color: get-bg-changed-variable('icon-font-color');
+	}
+}
+
+// arrow
+.ivu-icon-ios-arrow-down.ivu-select-arrow {
+	&:before {
+		content: '\F33D';
+	}
+}
+
+.ivu-select-selection {
+	transition: none;
+	border: 1px solid;
+	text-align: left;
+	border-radius: 2px;
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	&:hover {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+}
+
+// 展开内容后的下拉选择
+.ivu-select-visible .ivu-select-selection {
+	background-color: $transparent;
+
+	@include set-theme {
+		border-color: get-themed-variable('color-theme-secondary');
+		box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+	}
+}
+.ivu-form-item-error .ivu-select-selection {
+	border: 1px solid $color-func-danger !important;
+}
+
+// 下拉多选选中时的对号
+.ivu-select-multiple .ivu-select-item-selected:after {
+	color: #fff;
+}
+
+// 下拉框中添加数据项的回车符号
+.ivu-select-item-enter {
+	@include set-theme {
+		color: get-themed-variable('color-theme-secondary');
+	}
+}
+
+// default
+.ivu-select-item {
+	height: 32px;
+	line-height: 22px;
+	padding: 5px 8px;
+}
+
+// 可输入的下拉选项
+.ivu-select-input {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+// focus
+.ivu-select-item-focus {
+	background-color: $transparent !important;
+}
+
+// active
+.ivu-select-item-selected,
+.ivu-select-item-selected:hover {
+	@include set-theme {
+		color: #fff;
+		background-color: get-themed-variable('color-theme-primary') !important;
+	}
+}
+
+// hover
+.ivu-select-item:not(.ivu-select-item-selected):hover {
+	@include set-background(true) {
+		background-color: get-bg-changed-variable(
+			'color-container-bg-popup-highlight'
+		);
+	}
+}
+
+// disabled
+.ivu-select-item-disabled {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+// selected disbaled and hover
+.ivu-select-item-disabled.ivu-select-item-selected,
+.ivu-select-item-disabled.ivu-select-item-selected:hover {
+	@include set-theme {
+		background-color: get-themed-variable('color-theme-disable');
+	}
+	@include set-background(true) {
+		color: get-bg-changed-variable('btn-primary-disable-bg-text-disable');
+	}
+}
+
+.ivu-select-disabled .ivu-select-selection {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable('color-container-bg-disable');
+	}
+
+	&:hover {
+		@include set-background(true) {
+			border-color: get-bg-changed-variable('color-border-default');
+		}
+	}
+
+	.ivu-select-arrow {
+		@include set-background(true) {
+			color: get-bg-changed-variable('icon-font-disabled-color');
+		}
+	}
+}
+
+// 无匹配数据
+.ivu-select-not-found {
+	padding: 8px;
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+}
+
+// 自定义类名 - 无边框的 selection
+.select-no-border-bg {
+	width: auto;
+
+	.ivu-select-selection {
+		border: none;
+		background-color: $transparent;
+	}
+}

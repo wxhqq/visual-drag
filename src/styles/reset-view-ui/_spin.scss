@@ -1,0 +1,14 @@
+// ---------------------- 加载 ----------------------------
+.ivu-spin {
+	z-index: $spin-zindex;
+
+	@include set-theme {
+		border-color: get-themed-variable('color-theme-primary');
+	}
+}
+
+.ivu-spin-fix {
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('spin-bg');
+	}
+}

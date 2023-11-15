@@ -1,0 +1,157 @@
+// ------------------------ 复选框  -------------------------
+.ivu-checkbox-wrapper {
+	margin-right: 24px;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+.ivu-checkbox-inner {
+	@include set-background(true) {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+	}
+
+	// focus
+	&.ivu-checkbox-focus,
+	&:focus {
+		outline: none;
+		box-shadow: none;
+	}
+}
+
+// default
+.ivu-checkbox {
+	margin-right: 8px;
+
+	.ivu-checkbox-inner {
+		// @include size(20px);
+
+		@include set-background(true) {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-default'
+			);
+		}
+	}
+
+	// default hover
+	&:hover {
+		.ivu-checkbox-inner {
+			@include set-background(true) {
+				border: 1px solid
+					get-bg-changed-variable('color-border-default');
+			}
+		}
+	}
+
+	// default focus
+	&:focus {
+		outline: none;
+	}
+}
+
+// checked
+.ivu-checkbox-checked {
+	// checked default
+	.ivu-checkbox-inner {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-primary');
+			background-color: get-themed-variable('color-theme-primary');
+		}
+	}
+
+	// checked hover
+	&:hover {
+		.ivu-checkbox-inner {
+			@include set-theme {
+				border-color: get-themed-variable('color-theme-primary');
+			}
+		}
+	}
+}
+
+// disabled
+.ivu-checkbox-wrapper-disabled {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+.ivu-checkbox-disabled {
+	// disbale default
+	.ivu-checkbox-inner {
+		@include set-background(true) {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+	}
+
+	// disabled checked
+	&.ivu-checkbox-checked .ivu-checkbox-inner {
+		border-color: $transparent;
+
+		@include set-theme {
+			background-color: get-themed-variable('color-theme-disable');
+		}
+
+		// 对号图形
+		&:after {
+			@include set-background(true) {
+				border-color: get-bg-changed-variable(
+					'checkbox-checked-symbol'
+				);
+			}
+		}
+	}
+
+	// disabled checked hover
+	&.ivu-checkbox-checked:hover .ivu-checkbox-inner {
+		border-color: $transparent;
+	}
+}
+
+// 半选状态框
+.ivu-checkbox-indeterminate {
+	// default
+	.ivu-checkbox-inner {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-primary');
+		}
+
+		&:after {
+			border: none;
+			left: 3px;
+			top: 3px;
+			@include size(12px);
+
+			@include set-theme {
+				background-color: get-themed-variable('color-theme-primary');
+			}
+		}
+	}
+
+	// default hover
+	&:hover {
+		.ivu-checkbox-inner {
+			@include set-theme {
+				border-color: get-themed-variable('color-theme-primary');
+			}
+		}
+	}
+
+	// disable
+	&.ivu-checkbox-disabled {
+		.ivu-checkbox-inner {
+			@include set-theme {
+				border-color: get-themed-variable('color-theme-disable');
+			}
+		}
+
+		.ivu-checkbox-inner:after {
+			@include set-theme {
+				background-color: get-themed-variable('color-theme-disable');
+			}
+		}
+	}
+}

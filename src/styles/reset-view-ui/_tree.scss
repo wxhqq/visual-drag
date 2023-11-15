@@ -1,0 +1,112 @@
+// ----------------------------------- 树形组件  --------------------------
+.ivu-tree {
+	.ivu-tree-arrow {
+		width: 16px;
+		// margin: 0 4px 0 8px;
+		@include set-background {
+			color: get-bg-changed-variable('color-text-regular');
+		}
+	}
+	// icon
+	.ivu-icon-ios-arrow-forward {
+		font-size: 16px;
+
+		&:before {
+			content: '\F341';
+		}
+	}
+}
+
+// row height
+.ivu-tree-arrow,
+.ivu-tree-title {
+	@include height-lh(32px);
+}
+
+// title
+.ivu-tree-title {
+	width: calc(100% - 16px);
+	border-radius: 0;
+	@include set-background {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+	&:hover {
+		@include set-theme {
+			background: rgba(get-themed-variable('color-theme-primary'), 0.1);
+		}
+	}
+}
+
+.ivu-tree-title-selected,
+.ivu-tree-title-selected:hover {
+	@include set-theme {
+		color: get-themed-variable('color-theme-primary');
+		background: rgba(get-themed-variable('color-theme-primary'), 0.1);
+	}
+}
+
+.ivu-tree {
+	// 各层级节点上下外边距
+	ul li {
+		margin: 2px 0;
+	}
+
+	// 根节点
+	> ul > li {
+		margin: 0; // 去除根节点上下外边距
+	}
+
+	// 各层级子节点缩进
+	li ul {
+		padding-left: 12px;
+	}
+	li {
+		line-height: 1;
+	}
+
+	// 树上的操作按钮样式
+	.render-tree-node {
+		height: 100%;
+		&:hover {
+			span:last-child {
+				display: inline-block;
+			}
+		}
+
+		// 树级节点文本
+		span:first-child {
+			@include ellipsis();
+		}
+		// 操作按钮
+		span:last-child {
+			display: none;
+			// width:80px;
+			i:hover {
+				@include set-theme {
+					color: get-themed-variable('color-theme-primary');
+				}
+			}
+		}
+	}
+	// 选中时显示操作按钮
+	.ivu-tree-title-selected {
+		.render-tree-node {
+			span:last-child {
+				display: inline-block;
+			}
+		}
+	}
+
+	// 禁用的树操作按钮
+	.dis-tree-icon-btn {
+		cursor: not-allowed;
+		@include set-background {
+			color: get-bg-changed-variable('color-text-disable');
+		}
+		&:hover {
+			@include set-background {
+				color: get-bg-changed-variable('color-text-disable') !important;
+			}
+		}
+	}
+}

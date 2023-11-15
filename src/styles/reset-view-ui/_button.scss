@@ -1,0 +1,268 @@
+// ------------------------  按钮  -------------------------
+.ivu-btn {
+	border-radius: 2px;
+	padding: 0 16px;
+	line-height: 30px; // 32 - 2 border
+	&>.ivu-icon,
+	&> i{
+		line-height: 1;
+		margin-top: -2px;
+	}
+	&:focus {
+		box-shadow: none;
+	}
+	&>span{
+		vertical-align: middle;
+	}
+}
+
+// 主按钮
+.ivu-btn-primary {
+	color: $color-white-100;
+
+	@include set-theme {
+		border-color: get-themed-variable('color-theme-primary');
+		background: get-themed-variable('color-theme-primary');
+	}
+
+	// hover
+	&:hover {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+			background: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// active
+	&:active,
+	&.active {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-tertiary');
+			background-color: get-themed-variable('color-theme-tertiary');
+		}
+	}
+
+	// disbaled
+	&[disabled],
+	&[disabled]:hover {
+		border-color: $transparent;
+
+		@include set-theme {
+			background-color: get-themed-variable('color-theme-disable');
+		}
+		@include set-background(true) {
+			color: get-bg-changed-variable(
+				'btn-primary-disable-bg-text-disable'
+			);
+		}
+	}
+}
+
+// 默认按钮（次按钮）样式
+.ivu-btn-default {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		background: get-bg-changed-variable('color-container-bg-default');
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+
+	// hover
+	&:hover {
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// active
+	&:active,
+	&.active {
+		@include set-theme {
+			color: $color-white-100;
+			border-color: get-themed-variable('color-theme-tertiary');
+			background: get-themed-variable('color-theme-tertiary');
+		}
+	}
+
+	// disbaled
+	&[disabled],
+	&[disabled]:hover {
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-disable');
+			border-color: get-bg-changed-variable('color-border-default');
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+	}
+}
+
+// 危险按钮
+.ivu-btn-error {
+	color: $color-white-100;
+	border-color: $btn-error-bg;
+	background: $btn-error-bg;
+
+	// hover
+	&:hover {
+		border-color: $btn-error-hover-bg;
+		background-color: $btn-error-hover-bg;
+	}
+
+	// active
+	&:active,
+	&.active {
+		border-color: $btn-error-active-bg;
+		background-color: $btn-error-active-bg;
+	}
+
+	// disbaled
+	&[disabled],
+	&[disabled]:hover {
+		border-color: $transparent;
+		background-color: $btn-error-disabled-bg;
+		@include set-background(true) {
+			color: get-bg-changed-variable(
+				'btn-primary-disable-bg-text-disable'
+			);
+		}
+	}
+}
+
+// -------------------------  文字按钮  ----------------
+// 文字按钮-默认（次）按钮
+.ivu-btn-text {
+	height: 22px; // reset view-ui 文字按钮高度 22px
+	line-height: 22px;
+	padding: 0; // reset view-ui
+	vertical-align: baseline;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+
+	// hover
+	&:hover {
+		background-color: $transparent;
+
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// active
+	&:active,
+	&.active {
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// disbaled
+	&[disabled],
+	&[disabled]:hover {
+		background-color: $transparent;
+
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-disable');
+		}
+	}
+}
+
+// 文字按钮-主按钮
+.ivu-btn-text.primary {
+	background-color: $transparent;
+
+	@include set-theme {
+		color: get-themed-variable('color-theme-secondary');
+	}
+
+	// hover
+	&:hover {
+		background-color: $transparent;
+
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// active
+	&:active,
+	&.active {
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// disbaled
+	&[disabled],
+	&[disabled]:hover {
+		@include set-theme {
+			color: get-themed-variable('color-theme-disable');
+		}
+	}
+}
+
+// -----------------------------  按钮尺寸  -----------------------
+.ivu-btn-small {
+	line-height: 22px; // 24 - 2 border
+	padding: 0 8px;
+}
+
+.ivu-btn-large {
+	line-height: 38px; // 38 - 2 border
+	padding: 0 16px;
+}
+
+// --------------- 按钮组  --------------------
+// 与 button 相邻的按钮组
+.ivu-btn + .ivu-btn-group {
+	margin-left: 24px;
+}
+
+.ivu-btn-group {
+	margin-right: 8px;
+}
+
+.ivu-btn-group:not(.ivu-btn-group-vertical) {
+	.ivu-btn-primary:not(:first-child):not(:last-child) {
+		@include set-theme {
+			border-left-color: get-themed-variable('color-theme-primary');
+			border-right-color: get-themed-variable('color-theme-primary');
+		}
+	}
+	.ivu-btn-primary + .ivu-btn,
+	.ivu-btn-primary:last-child:not(:first-child),
+	.ivu-btn-primary + .ivu-btn[disabled],
+	.ivu-btn-primary:last-child:not(:first-child)[disabled] {
+		border-left-color: $transparent;
+	}
+
+	.ivu-btn-primary:first-child:not(:last-child),
+	.ivu-btn-primary:first-child:not(:last-child)[disabled] {
+		border-right-color: $transparent;
+	}
+}
+
+// 使用dropdown 作为按钮组的项
+.ivu-btn-group .ivu-dropdown + .ivu-dropdown .ivu-btn {
+	margin-left: -1px;
+}
+
+// 去除两按钮接触点圆角
+.ivu-btn-group:not(.ivu-btn-group-vertical)
+	> .ivu-dropdown:first-child:not(:last-child)
+	.ivu-btn {
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+// 使 button hover 时显示完整边框
+.ivu-btn-group .ivu-dropdown {
+	.ivu-btn.active,
+	.ivu-btn:active,
+	.ivu-btn:hover {
+		position: relative; // 不加 z-index 会无效
+		z-index: 2;
+	}
+}

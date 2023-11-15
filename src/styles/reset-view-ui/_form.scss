@@ -1,0 +1,125 @@
+// --------------------------  表单 ---------------------------
+.ivu-form {
+	// label
+	.ivu-form-item-label {
+		padding: 10px 0;
+
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-primary');
+		}
+	}
+
+	// label 位置在上方
+	&.ivu-form-label-top {
+		.ivu-form-item-label {
+			text-align: left;
+		}
+
+		.ivu-form-item-content {
+			margin-left: 0 !important;
+		}
+	}
+
+	// 错误提示
+	.ivu-form-item-error-tip {
+		font-size: $font-size-small;
+		color: $color-func-danger;
+	}
+
+	.ivu-form-item-error .ivu-input {
+		box-shadow: none;
+		border-color: $color-func-danger;
+
+		&:focus {
+			@include set-theme {
+				border-color: get-themed-variable('color-theme-secondary');
+				box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+			}
+		}
+	}
+
+	// 星号
+	.ivu-form-item-required .ivu-form-item-label:before {
+		margin-right: 0;
+	}
+}
+
+// ----------------------  仅使用表单排版，做 label item 文字展示的，例如用户信息页  -----------------
+.ivu-form.text {
+	.ivu-form-item {
+		margin-bottom: 16px;
+	}
+
+	.ivu-form-item-label {
+		line-height: 22px;
+		padding: 0;
+	}
+
+	.ivu-form-item-content {
+		line-height: 22px;
+		word-break: keep-all;
+		word-wrap: break-word;
+	}
+}
+
+// ----------------------------  仅用于展示文字的表单项  -----------------------------------------
+.ivu-form-item.text {
+	margin-bottom: 30px;
+
+	// 去除星号
+	&.ivu-form-item-required .ivu-form-item-label:before {
+		display: none;
+	}
+
+	.ivu-form-item-label,
+	.ivu-form-item-content {
+		line-height: 22px;
+	}
+
+	.ivu-form-item-label {
+		padding: 0;
+	}
+
+	.ivu-form-item-content {
+		word-break: keep-all;
+		word-wrap: break-word;
+	}
+}
+
+// ----------------------------  非文字的表单项  -----------------------------------------
+.ivu-form-item.exclude-text {
+	.ivu-form-item-label,
+	.ivu-form-item-content {
+		line-height: 32px;
+	}
+
+	.ivu-form-item-content {
+		word-break: keep-all;
+		word-wrap: break-word;
+	}
+}
+
+// -------------------------  两列表单  --------------------------------
+.ivu-form.two-columns-form {
+	flex-wrap: wrap;
+	@include flex-justify-align(space-between, flex-start);
+
+	.ivu-form-item {
+		width: calc(50% - 16px);
+	}
+
+	.full-width-form-item {
+		width: 100%;
+	}
+}
+
+// --------------------  带背景的 form-item-content  ----------------------------
+.wrapper-form-item > .ivu-form-item-content {
+	padding: 16px;
+
+	@include set-background {
+		background-color: get-bg-changed-variable(
+			'color-container-bg-wrapper-bg'
+		);
+	}
+}

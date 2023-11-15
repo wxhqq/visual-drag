@@ -1,0 +1,53 @@
+// 消息提示
+.ivu-notice-notice {
+	@include set-background {
+		background-color: get-bg-changed-variable('color-container-bg-popup');
+	}
+
+	// 带 icon 的右侧文本间距
+	.ivu-notice-with-desc.ivu-notice-with-icon .ivu-notice-title,
+	.ivu-notice-content-with-icon {
+		margin-left: 34px;
+	}
+
+	.ivu-notice-title {
+		@include set-background {
+			color: get-bg-changed-variable('color-text-primary');
+			background-color: get-bg-changed-variable(
+				'color-container-bg-popup'
+			);
+		}
+	}
+
+	// 关闭按钮
+	.ivu-icon-ios-close:before {
+		font-size: 32px;
+		position: absolute;
+		top: -15px;
+		right: 5px;
+	}
+
+	// icon
+	.ivu-notice-with-desc .ivu-notice-icon {
+		position: absolute;
+		top: -3px;
+		font-size: 24px;
+	}
+
+	// success
+	.ivu-notice-icon-success .ivu-icon:before {
+		content: '\F170';
+	}
+
+	// warning
+	.ivu-notice-icon-warning .ivu-icon:before {
+		content: '\F333';
+	}
+
+	// 提示中链接样式
+	.ivu-notice-content-with-icon a {
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+		}
+	}
+}

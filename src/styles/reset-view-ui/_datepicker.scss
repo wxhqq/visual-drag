@@ -1,0 +1,336 @@
+// -------------------------  时间选择器  ----------------------
+.ivu-date-picker {
+	width: 100%;
+
+	// input
+	&.ivu-date-picker-focused input {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+			box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+		}
+	}
+
+	// icon
+	.ivu-input-suffix {
+		@include flex-justify-align(center, center);
+	}
+
+	.ivu-icon {
+		@include set-background {
+			color: get-bg-changed-variable('icon-font-color');
+		}
+	}
+}
+
+.ivu-date-picker-transfer {
+	// header
+	.ivu-date-picker-header {
+		height: 56px;
+		padding: 14px 16px;
+
+		@include set-background {
+			border-color: get-bg-changed-variable('color-border-default');
+		}
+
+		// 箭头
+		.ivu-picker-panel-icon-btn {
+			margin: 0;
+
+			&:hover {
+				@include set-theme {
+					color: get-themed-variable('color-theme-primary');
+				}
+			}
+		}
+
+		// left and right arrow
+		.ivu-icon {
+			@include set-background {
+				border-color: get-bg-changed-variable('color-border-default');
+			}
+		}
+
+		// year month label
+		.ivu-date-picker-header-label {
+			font-size: 16px;
+
+			@include set-background {
+				color: get-bg-changed-variable('color-text-primary');
+			}
+		}
+	}
+
+	// cells
+	.ivu-date-picker-cells-cell {
+		&:hover em {
+			@include set-theme {
+				background-color: get-themed-variable('color-theme-highlight');
+			}
+		}
+	}
+
+	// cells selected
+	.ivu-date-picker-cells-cell-selected em,
+	.ivu-date-picker-cells-cell-selected:hover em,
+	.ivu-date-picker-cells-cell-selected em {
+		color: #fff;
+
+		@include set-theme {
+			background-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// cells focused
+	.ivu-date-picker-cells-focused em {
+		@include set-theme {
+			box-shadow: 0 0 0 1px get-themed-variable('color-theme-secondary')
+				inset;
+		}
+	}
+}
+
+// 时分秒竖条分割线
+.ivu-time-picker-with-range .ivu-picker-panel-content:after {
+	@include set-background {
+		background: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// 选择器头下边线
+.ivu-time-picker-header {
+	@include set-background {
+		border-bottom: 1px solid get-bg-changed-variable('color-border-default');
+	}
+}
+
+// 选择时间 确定取消按钮
+.ivu-date-picker-transfer .ivu-picker-confirm {
+	height: 56px;
+	padding: 16px 16px 16px 24px;
+
+	@include set-background {
+		border-top: 1px solid get-bg-changed-variable('color-border-default');
+	}
+
+	// 选择时间,同主文字按钮样式一致
+	.ivu-picker-confirm-time {
+		padding: 0;
+		height: 24px;
+
+		@include set-theme {
+			color: get-themed-variable('color-theme-primary');
+		}
+
+		&[disabled],
+		&[disabled]:hover {
+			@include set-theme {
+				color: get-themed-variable('color-theme-disable');
+			}
+		}
+	}
+
+	// 清空
+	.ivu-btn-default {
+		background-color: $transparent;
+		border: none;
+	}
+}
+
+// 当天
+.ivu-date-picker-cells-cell-today em:after {
+	@include set-theme {
+		background: get-themed-variable('color-theme-secondary');
+	}
+}
+
+// 日期选择，星期几标记
+.ivu-date-picker-cells-header span {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+}
+
+// 下个月的日期
+.ivu-date-picker-cells-cell-next-month em,
+.ivu-date-picker-cells-cell-prev-month em {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+// date range selected bg
+.ivu-date-picker-cells-cell-range:before {
+	@include set-theme {
+		background-color: get-themed-variable('color-theme-highlight');
+	}
+}
+
+// time时间选择
+.ivu-time-picker-cells-cell:hover {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable(
+			'color-container-bg-popup-highlight'
+		);
+	}
+}
+
+.ivu-time-picker-cells-cell-selected,
+.ivu-time-picker-cells-cell-selected:hover {
+	@include set-theme {
+		background-color: get-themed-variable('color-theme-highlight');
+	}
+
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+// 年、月选择
+.ivu-date-picker-cells-month .ivu-date-picker-cells-cell-focused,
+.ivu-date-picker-cells-year .ivu-date-picker-cells-cell-focused {
+	background-color: $transparent;
+}
+
+// 星期标题，带有 margin 2px，所以宽度比日期少 4px
+.ivu-date-picker-cells-header span {
+	line-height: 32px;
+	@include size(32px);
+}
+
+// 日期项
+span.ivu-date-picker-cells-cell {
+	line-height: 32px;
+	@include size(36px, 36px);
+
+	em {
+		line-height: 32px;
+		@include size(32px); // 因为有 margin:2px 宽高都减 4px
+	}
+}
+
+span.ivu-date-picker-cells-cell-disabled {
+	&,
+	&:hover {
+		background-color: $transparent;
+	}
+}
+
+.ivu-date-picker-cells {
+	width: 252px;
+}
+
+// 时分秒选择
+.ivu-time-picker-cells-list,
+.ivu-picker-confirm {
+	@include set-background {
+		border-color: get-bg-changed-variable('color-border-popup');
+	}
+}
+
+.ivu-picker-panel-content
+	.ivu-picker-panel-content
+	.ivu-time-picker-cells-with-seconds
+	.ivu-time-picker-cells-list {
+	@include set-background {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// 时间选择面板大小
+.ivu-date-picker-with-range .ivu-picker-panel-body {
+	min-width: 544px;
+
+	&.ivu-picker-panel-body-time,
+	&.ivu-picker-panel-body-time .ivu-picker-panel-body {
+		min-width: 432px;
+		width: max-content;
+	}
+}
+
+// 带快捷方式的时间选择组件
+.bolean-date-range-shortcuts.ivu-select-dropdown {
+	// shortcut
+	.ivu-picker-panel-sidebar {
+		width: 100px;
+		padding: 12px 0;
+		font-size: $font-size-base;
+
+		@include set-background {
+			border-color: get-bg-changed-variable('color-border-default');
+			// box-shadow: get-bg-changed-variable('shadow-popup');
+			background: get-bg-changed-variable('color-container-bg-popup');
+		}
+	}
+
+	.ivu-picker-panel-shortcut {
+		padding: 6px 12px;
+	}
+
+	.ivu-picker-panel-shortcut:hover {
+		@include set-background {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-popup-highlight'
+			);
+		}
+	}
+
+	// 解决时间选择向左偏移的问题
+	.ivu-time-picker-with-range {
+		padding-left: 8px;
+	}
+}
+
+// 深色
+.ivu-date-picker-transfer.dark {
+	color: $color-white-65 !important;
+
+	// header
+	.ivu-date-picker-header {
+		border-color: $color-grey-65 !important;
+
+		// year month label
+		.ivu-date-picker-header-label {
+			color: $color-white-65 !important;
+		}
+	}
+
+	// 时分秒选择
+	.ivu-time-picker-cells-list,
+	.ivu-picker-confirm {
+		border-color: $color-grey-75;
+	}
+
+	.ivu-picker-panel-content
+		.ivu-picker-panel-content
+		.ivu-time-picker-cells-with-seconds
+		.ivu-time-picker-cells-list {
+		border-color: $color-grey-65 !important;
+	}
+
+	// 时分秒竖条分割线
+	.ivu-time-picker-with-range .ivu-picker-panel-content:after {
+		background: $color-grey-65;
+	}
+
+	// 选择器头下边线
+	.ivu-time-picker-header {
+		border-bottom: 1px solid $color-grey-65;
+	}
+
+	// 下个月的日期
+	.ivu-date-picker-cells-cell-next-month em,
+	.ivu-date-picker-cells-cell-prev-month em {
+		color: $color-white-25;
+	}
+
+	// // shortcut
+	.ivu-picker-panel-sidebar {
+		border-color: $color-grey-65 !important;
+		background: $color-grey-88 !important;
+	}
+
+	.ivu-picker-panel-shortcut:hover {
+		background-color: $color-grey-82 !important;
+	}
+}

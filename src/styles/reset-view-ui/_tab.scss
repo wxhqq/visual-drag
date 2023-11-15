@@ -1,0 +1,68 @@
+// 组件颜色
+.ivu-tabs {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+// tabs bar 与内容之间的 margin 为 0
+.ivu-tabs-bar {
+	margin-bottom: 0;
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// tab 内容
+.tab-content {
+	overflow: auto;
+}
+
+// 有边框
+.ivu-tabs-content-border .tab-content {
+	box-sizing: border-box;
+	@include set-background(true) {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+	}
+	border-top: 0; // reset
+}
+
+// tabs top nav
+.ivu-tabs-nav .ivu-tabs-tab {
+	border-radius: 4px 4px 0px 0px;
+
+	// hover
+	&:hover {
+		margin-bottom: 0;
+		@include set-theme {
+			color: get-themed-variable('color-theme-primary');
+			// background-color: get-themed-variable('color-theme-tabs-active');
+		}
+		// &::after {
+		//     content: '';
+		//     position: absolute;
+		//     left: 0;
+		//     bottom: -1px;
+		//     width: 100%;
+		//     height: 2px;
+		//     @include set-theme {
+		//         background-color: get-themed-variable('color-theme-primary');
+		//     }
+		// }
+	}
+
+	// active
+	&.ivu-tabs-tab-active {
+		font-weight: bold;
+		@include set-theme {
+			color: get-themed-variable('color-theme-primary');
+			// background-color: get-themed-variable('color-theme-tabs-active');
+		}
+	}
+}
+// 选中 tab 下划线
+.ivu-tabs-ink-bar {
+	@include set-theme {
+		background-color: get-themed-variable('color-theme-primary');
+	}
+}

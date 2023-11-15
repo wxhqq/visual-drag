@@ -1,0 +1,55 @@
+// ---------------------------------- 开关 ---------------------------
+.ivu-switch {
+	border-radius: 10px;
+
+	// @include size(40px, 20px);
+	@include set-background {
+		border-color: get-bg-changed-variable('switch-default-bg');
+		background-color: get-bg-changed-variable('switch-default-bg');
+	}
+
+	&:focus {
+		box-shadow: none;
+	}
+
+	&::after {
+		border-radius: 100%;
+		// @include size(16px);
+	}
+}
+
+// checked
+.ivu-switch-checked {
+	@include set-theme {
+		border-color: get-themed-variable('color-theme-primary');
+		background-color: get-themed-variable('color-theme-primary');
+	}
+
+	&::after {
+		left: 20px;
+	}
+}
+
+// disabled
+.ivu-switch-disabled {
+	@include set-background {
+		border: 1px solid get-bg-changed-variable('switch-default-disabled-bg');
+		background-color: get-bg-changed-variable('switch-default-disabled-bg');
+	}
+
+	// 圆圈
+	&:after {
+		@include set-background {
+			background-color: get-bg-changed-variable('switch-disabled-symbol');
+		}
+	}
+
+	// checked disabled
+	&.ivu-switch-checked {
+		opacity: 1;
+		@include set-theme {
+			border-color: $transparent;
+			background-color: get-themed-variable('color-theme-disable');
+		}
+	}
+}

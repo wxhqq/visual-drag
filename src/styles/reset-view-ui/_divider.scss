@@ -1,0 +1,5 @@
+.ivu-divider {
+	@include set-background {
+		background-color: get-bg-changed-variable('color-border-default');
+	}
+}

@@ -1,0 +1,56 @@
+// reset iview
+.ivu-card {
+	background: $transparent;
+	&:hover {
+		@include set-background(true) {
+			box-shadow: get-bg-changed-variable('shadow-default');
+		}
+	}
+}
+
+// with border
+.ivu-card.ivu-card-bordered {
+	border-radius: 0;
+
+	@include set-background(true) {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+	}
+}
+
+// dis-hover
+.ivu-card.ivu-card-dis-hover:hover {
+	box-shadow: none;
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// head
+.ivu-card-head {
+	height: 32px;
+	line-height: 22px;
+	padding: 4px 16px;
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('table-head-bg');
+	}
+}
+
+// head title
+.ivu-card-head p {
+	font-weight: normal;
+	line-height: 22px;
+	font-size: $font-size-base;
+	@include set-background(true) {
+		color: get-bg-changed-variable('table-head-color');
+	}
+}
+
+// body
+.ivu-card-body {
+	word-wrap: break-word;
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}

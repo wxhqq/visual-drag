@@ -1,0 +1,31 @@
+// ------------------------------- 颜色选择器 transfer to body  -----------
+.ivu-color-picker-transfer {
+	max-width: 256px; // 一定要用 max-width 否则会撑开 ivu-color-picker-rel 的宽度
+
+	.ivu-btn:last-child {
+		margin-left: 4px;
+	}
+}
+
+.ivu-color-picker-confirm {
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+.ivu-color-picker-disabled {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-disable');
+	}
+}
+.ivu-color-picker-color-empty {
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('color-container-bg-disable');
+		color: get-bg-changed-variable('color-text-primary');
+	}
+	i {
+		vertical-align: top;
+	}
+}

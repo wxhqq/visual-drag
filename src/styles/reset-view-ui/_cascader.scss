@@ -1,0 +1,92 @@
+// ------------------------ 级联选择器  ---------------
+// icon
+.ivu-cascader {
+	.ivu-icon-ios-arrow-down,
+	.ivu-icon-ios-arrow-forward {
+		@include set-background {
+			font-size: 14px;
+			color: get-bg-changed-variable('icon-font-color');
+		}
+	}
+
+	// right arrow, icon md-arrow-dropright
+	.ivu-icon-ios-arrow-forward {
+		&:before {
+			content: '\F341';
+		}
+	}
+
+	// arrow down
+	.ivu-icon-ios-arrow-down {
+		&:before {
+			content: '\F33D';
+		}
+	}
+}
+
+// popup container
+.ivu-cascader-menu {
+	@include set-background {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// default
+.ivu-cascader-transfer .ivu-cascader-menu-item,
+.ivu-cascader .ivu-cascader-menu-item {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+
+	// default hover
+	&:hover {
+		@include set-background {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-popup-highlight'
+			);
+		}
+	}
+}
+
+// item active
+.ivu-cascader-menu .ivu-cascader-menu-item-active {
+	@include set-theme {
+		color: $color-white-100;
+		background-color: get-themed-variable('color-theme-primary');
+	}
+
+	// active hover
+	&:hover {
+		@include set-theme {
+			background-color: get-themed-variable('color-theme-primary');
+		}
+	}
+
+	.ivu-icon-ios-arrow-forward {
+		color: $color-white-100;
+	}
+}
+
+// item disabled
+.ivu-cascader .ivu-cascader-menu-item-disabled {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+
+	// disabled hover
+	&:hover {
+		@include set-background {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-popup'
+			);
+		}
+	}
+}
+
+// 无匹配数据
+.ivu-cascader-not-found-tip {
+	padding: 8px;
+	@include set-background {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+}

@@ -1,0 +1,179 @@
+.ivu-steps {
+	// icon
+	.ivu-steps-head-inner > .ivu-steps-icon.ivu-icon {
+		font-size: 32px;
+		line-height: 32px;
+	}
+
+	.ivu-steps-head,
+	.ivu-steps-title {
+		@include set-background {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-default'
+			);
+		}
+	}
+
+	// circle comon
+	.ivu-steps-head-inner {
+		border: none;
+		@include size(32px);
+		@include height-lh(32px);
+
+		span {
+			font-size: 20px;
+			font-weight: bold;
+		}
+	}
+
+	// title common
+	.ivu-steps-title {
+		margin: 4px 0; // vertical center
+		font-size: $font-size-large;
+	}
+
+	// line common
+	.ivu-steps-tail > i {
+		background: $transparent;
+	}
+
+	// finish
+	.ivu-steps-item.ivu-steps-status-finish {
+		// circle
+		.ivu-steps-head-inner {
+			@include set-theme {
+				border-color: get-themed-variable('color-theme-disable');
+				background-color: get-themed-variable('color-theme-disable');
+			}
+
+			span {
+				@include set-background {
+					color: get-bg-changed-variable('checkbox-checked-symbol');
+				}
+			}
+		}
+
+		// line finished
+		.ivu-steps-tail > i:after {
+			@include set-theme {
+				background-color: get-themed-variable('color-theme-disable');
+			}
+		}
+
+		// title,content
+		.ivu-steps-title,
+		.ivu-steps-content {
+			@include set-background(true) {
+				color: get-bg-changed-variable('color-text-disable');
+			}
+		}
+	}
+
+	// progress
+	.ivu-steps-item.ivu-steps-status-process {
+		// circle
+		.ivu-steps-head-inner {
+			color: $color-white-100;
+
+			@include set-theme {
+				border-color: get-themed-variable('color-theme-primary');
+				background-color: get-themed-variable('color-theme-primary');
+			}
+		}
+
+		// line
+		.ivu-steps-tail > i {
+			@include set-background {
+				background-color: get-bg-changed-variable(
+					'step-wait-bg'
+				); // 15/82
+			}
+		}
+
+		// title,content
+		.ivu-steps-title,
+		.ivu-steps-content {
+			@include set-background {
+				color: get-bg-changed-variable('color-text-primary');
+			}
+		}
+
+		.ivu-steps-title {
+			font-weight: bold;
+		}
+	}
+
+	// wait
+	.ivu-steps-item.ivu-steps-status-wait {
+		// circle
+		.ivu-steps-head-inner {
+			@include set-background {
+				border-color: get-bg-changed-variable('step-wait-bg');
+				background-color: get-bg-changed-variable('step-wait-bg');
+			}
+
+			span {
+				color: $color-white-100;
+			}
+		}
+
+		// line
+		.ivu-steps-tail > i {
+			@include set-background {
+				background-color: get-bg-changed-variable('step-wait-bg');
+			}
+		}
+
+		// title,content
+		.ivu-steps-title,
+		.ivu-steps-content {
+			@include set-background {
+				color: get-bg-changed-variable('color-text-regular');
+			}
+		}
+	}
+
+	// error
+	.ivu-steps-item.ivu-steps-status-error {
+		// circle
+		.ivu-steps-head-inner {
+			border-color: $color-func-danger;
+			background-color: $color-func-danger;
+
+			span {
+				color: $color-white-100;
+			}
+		}
+
+		// line
+		.ivu-steps-tail > i {
+			@include set-background {
+				background-color: get-bg-changed-variable('step-wait-bg');
+			}
+		}
+
+		// title,content
+		.ivu-steps-title,
+		.ivu-steps-content {
+			color: $color-func-danger;
+		}
+
+		.ivu-steps-title {
+			font-weight: bold;
+		}
+	}
+}
+
+// 水平时的上下文字对齐
+.ivu-steps-horizontal .ivu-steps-content {
+	padding-left: 40px;
+}
+
+// 连接线居中
+.ivu-steps-horizontal .ivu-steps-tail {
+	top: 16px; // 32/2
+}
+
+.ivu-steps-vertical .ivu-steps-tail {
+	left: 16px; // 32/2
+}

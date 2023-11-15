@@ -1,0 +1,33 @@
+// --------------------- 进度条 --------------------------
+.ivu-progress-inner,
+.ivu-progress-bg {
+	border-radius: 2px;
+}
+
+.ivu-progress-inner {
+	@include set-background {
+		background-color: get-bg-changed-variable('progress-default-bg');
+	}
+}
+
+// 已进行的进度条背景色
+.ivu-progress-bg {
+	@include set-theme {
+		background-color: get-themed-variable('color-theme-primary');
+	}
+}
+
+// 进度文字
+.ivu-progress-text-inner,
+.ivu-progress-text {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+
+	// 图标
+	.ivu-icon {
+		@include set-background {
+			color: get-bg-changed-variable('icon-font-color');
+		}
+	}
+}

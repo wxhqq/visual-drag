@@ -1,0 +1,205 @@
+// --------------------------  输入框  ---------------------
+// 默认的输入框宽度
+.default-input {
+	width: 320px;
+}
+
+.ivu-input {
+	width: 100%;
+	padding: 5px 8px;
+	border-radius: 2px;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	&:hover,
+	&:focus {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	&:focus {
+		@include set-theme {
+			box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+		}
+	}
+
+	// disabled
+	&[disabled] {
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-primary');
+			border-color: get-bg-changed-variable('color-border-default');
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+	}
+}
+
+// 尺寸
+.ivu-input-small {
+	padding: 2px 8px;
+}
+.ivu-input-large {
+	padding: 8px;
+}
+
+// -------------------  搜索输入框  ----------------------
+.ivu-input-with-search {
+	input {
+		border-right: 0;
+	}
+
+	.ivu-input-search,
+	.ivu-input-search:hover {
+		border: 1px solid;
+		border-radius: 2px;
+		// 覆盖 iview 组件库的 !important 样式
+		background-color: $transparent !important;
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-primary') !important;
+			border-color: get-bg-changed-variable(
+				'color-border-default'
+			) !important;
+		}
+	}
+
+	.ivu-input-search:hover {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	&:hover .ivu-input {
+		@include set-background(true) {
+			border-color: get-bg-changed-variable('color-border-default');
+		}
+	}
+}
+
+// -------------------------  文本输入框  -------------------
+textarea.ivu-input {
+	max-width: inherit; // reset view ui default
+}
+
+// 输入框输入字数提示
+.ivu-input-word-count {
+	background: $transparent !important;
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+// -----------------------  数字输入框  --------------------
+.ivu-input-number {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	// hover
+	&:hover,
+	&:focus {
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	// focus
+	&.ivu-input-number-focused,
+	&:focus {
+		@include set-theme {
+			box-shadow: 0 0 0 2px get-themed-variable('color-theme-shadow');
+		}
+	}
+}
+
+.ivu-input-number-input {
+	text-align: left;
+	padding: 0 8px;
+}
+.ivu-input-number-handler-wrap {
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// input and handler
+.ivu-input-number-input,
+.ivu-input-number-handler-wrap {
+	border-radius: 2px;
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+.ivu-input-number-handler-down {
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// arrow hover
+.ivu-input-number-handler:hover .ivu-icon {
+	@include set-theme {
+		color: get-themed-variable('color-theme-primary');
+	}
+}
+
+// disabled
+.ivu-input-number-disabled {
+	.ivu-input-number-input {
+		opacity: 1;
+		@include set-background(true) {
+			color: get-bg-changed-variable('color-text-primary');
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+	}
+
+	//  hover
+	&:hover {
+		@include set-background(true) {
+			border-color: get-bg-changed-variable('color-border-default');
+		}
+	}
+}
+
+// controls outside
+.ivu-input-number-controls-outside-btn {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-regular');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+// 去除input number类型右侧箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+.ivu-input-with-prefix {
+	padding-left: 32px !important;
+}
+
+.ivu-input-group-append,
+.ivu-input-group-prepend {
+	background-color: transparent;
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-regular');
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}

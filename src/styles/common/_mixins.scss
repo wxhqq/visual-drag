@@ -1,0 +1,128 @@
+/**
+ * @desc scss mixin
+ */
+@import './_variables.scss';
+@import './_theme.scss';
+@import './_utils.scss';
+
+// 字体大小，颜色
+@mixin font-sc($size: $font-size-base, $color: #333) {
+	font-size: $size;
+	color: $color;
+}
+
+// 元素尺寸
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+// 高度，行高
+@mixin height-lh($height, $line-height: $height) {
+	height: $height;
+	line-height: $line-height;
+}
+
+// 定位水平垂直居中
+@mixin centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// 定位垂直居中
+@mixin vertical-centered {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+// 定位水平居中
+@mixin horizontal-centered {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+// flex 布局 主轴方向
+@mixin flex-dir($direction: row) {
+	display: flex;
+	flex-direction: $direction;
+}
+
+// flex 布局 主轴上项目对齐方式
+@mixin flex-justify($justify: space-between) {
+	display: flex;
+	justify-content: $justify;
+}
+
+// flex 布局 交叉轴上项目对齐方式
+@mixin flex-align($align: center) {
+	display: flex;
+	align-items: $align;
+}
+
+// flex 布局 主轴及交叉轴对齐方式
+@mixin flex-justify-align($justify: flex-start, $align: center) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+// flex 布局 主轴方向、主轴交叉轴对齐方式
+@mixin flex-dir-justify-align(
+	$direction: row,
+	$justify: flex-start,
+	$align: center
+) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+// 背景图 覆盖
+@mixin bg-cover() {
+	background: {
+		size: cover;
+		repeat: no-repeat;
+		position: center center;
+	}
+}
+
+// 背景图 宽度占满
+@mixin bg-full-width() {
+	background: {
+		size: 100%;
+		repeat: no-repeat;
+		position: center center;
+	}
+}
+
+// 省略号
+@mixin ellipsis($row-count: 1) {
+	@if $row-count==1 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	} @else {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: $row-count;
+	}
+}
+
+
+@mixin hide-scroll-bar() {
+	scrollbar-width: none; // 火狐
+	-ms-overflow-style: none; // IE10+
+	overflow: -moz-scrollbars-none; //firfox
+
+	&::-webkit-scrollbar {
+		width: 0;
+	}
+
+	// chrome
+}

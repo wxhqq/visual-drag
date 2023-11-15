@@ -1,0 +1,112 @@
+/**
+ * 重置样式文件
+ */
+@charset 'utf-8';
+
+// 导入重置iview文件路径
+$reset-view-ui-path: '~@styles/reset-view-ui';
+// 导入重置iview文件名
+$components-list: button, radio, checkbox, input, notice, select, modal, steps,
+	table, form, switch, progress, page, spin, datepicker, dropdown, tag,
+	message, card, divider, badge, tooltip, transfer, poptip, cascader, time,
+	upload, collapse, tree, tab, drawer, autocomplete, color;
+
+@each $component in $components-list {
+	@import url('#{$reset-view-ui-path}/_#{$component}.scss');
+}
+
+
+.header-menu-popover {
+	max-height: fit-content;
+	@media (max-height: 600px) {
+		max-height: 500px;
+	}
+}
+// 滚动条样式
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	background-color: $transparent;
+}
+
+// 滚动条交汇处
+::-webkit-scrollbar-corner {
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+// 滚动条内层轨道
+::-webkit-scrollbar-track-piece {
+	padding: 0 2px;
+
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+// 滚动条滑块
+::-webkit-scrollbar-thumb:horizontal,
+::-webkit-scrollbar-thumb:vertical {
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('scrollbar-thumb');
+	}
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+	height: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	width: 6px;
+}
+
+// 滚动条的 hover样式
+::-webkit-scrollbar-thumb:hover {
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('scrollbar-thumb-hover');
+	}
+}
+
+// 鼠标划选
+::selection {
+	@include set-theme {
+		$color: get-themed-variable('color-theme-primary');
+		background-color: rgba($color, 0.29);
+	}
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+body {
+	min-width: 1200px;
+	font-size: $font-size-base;
+
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+ul,
+li {
+	list-style-type: none;
+}
+
+input {
+	outline: none;
+	box-shadow: none;
+}
+
+.ivu-icon {
+	cursor: pointer;
+}

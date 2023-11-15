@@ -1,0 +1,52 @@
+// ------------------------  气泡提示 -------------------
+$placement-list: ('top', 'right', 'bottom', 'left');
+
+@each $item in $placement-list {
+	.ivu-poptip-popper[x-placement^='#{$item}'] .ivu-poptip-arrow {
+		// arrow border
+		@include set-background(true) {
+			border-#{$item}-color: get-bg-changed-variable(
+				'color-border-default'
+			);
+		}
+
+		// arrow background
+		&:after {
+			@include set-background(true) {
+				border-#{$item}-color: get-bg-changed-variable(
+					'color-container-bg-popup'
+				);
+			}
+		}
+	}
+}
+
+.ivu-poptip-inner {
+	border-radius: 2px;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable('color-container-bg-popup');
+		box-shadow: get-bg-changed-variable('shadow-popup');
+	}
+}
+
+// title
+.ivu-poptip-title:after {
+	@include set-background(true) {
+		background-color: get-bg-changed-variable('color-border-popup');
+	}
+}
+
+.ivu-poptip-title-inner {
+	font-size: $font-size-large;
+	font-weight: bold;
+}
+
+// content
+.ivu-poptip-title-inner,
+.ivu-poptip-body-content-inner {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+}

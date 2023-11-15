@@ -1,0 +1,29 @@
+//  -------------------------------  上传组件  -----------------------
+.ivu-upload-drag {
+	font-size: $font-size-base;
+
+	@include set-background {
+		color: get-bg-changed-variable('color-text-placeholder');
+		border-color: get-bg-changed-variable('color-border-default');
+		background: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	&:hover {
+		@include set-background {
+			color: get-bg-changed-variable('color-text-regular');
+		}
+
+		@include set-theme {
+			border-color: get-themed-variable('color-theme-secondary');
+		}
+	}
+
+	.ivu-icon {
+		margin-bottom: 8px;
+		font-size: 32px;
+
+		@include set-theme {
+			color: get-themed-variable('color-theme-primary');
+		}
+	}
+}

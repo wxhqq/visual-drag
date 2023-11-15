@@ -1,0 +1,45 @@
+// ----------------------- 折叠面板  --------------
+.ivu-collapse {
+	border-radius: 0;
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+
+	// icon
+	.ivu-icon-ios-arrow-forward {
+		@include set-background(true) {
+			color: get-bg-changed-variable('icon-font-color');
+		}
+
+		&:before {
+			content: '\F341';
+		}
+	}
+}
+
+// border
+.ivu-collapse > .ivu-collapse-item,
+.ivu-collapse
+	> .ivu-collapse-item.ivu-collapse-item-active
+	> .ivu-collapse-header {
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// header
+.ivu-collapse > .ivu-collapse-item > .ivu-collapse-header {
+	@include set-background(true) {
+		color: get-bg-changed-variable('table-head-color');
+		background-color: get-bg-changed-variable('table-head-bg');
+	}
+}
+
+// content
+.ivu-collapse-content {
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}

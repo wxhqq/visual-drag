@@ -1,0 +1,5 @@
+.ivu-time {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}

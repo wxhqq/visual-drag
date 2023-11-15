@@ -1,0 +1,235 @@
+// ---------------------  表格  ------------------------
+.v-table-wrapper {
+	&.dark {
+		.ivu-table::before,
+		.ivu-table::after {
+			background-color: $color-grey-65 !important;
+		}
+	}
+	// wrapper border 上 左右
+	&.ivu-table-wrapper-with-border {
+		@include set-skin {
+			border-color: get-bg-changed-variable('color-border-default');
+		}
+	}
+
+	// 表格单数行背景
+	.ivu-table-stripe .ivu-table-body tr:nth-child(n) td,
+	.ivu-table-stripe .ivu-table-fixed-body tr:nth-child(n) td,
+	.custom-table-width-expend-stripe
+		.ivu-table-body
+		.custom-table-odd-lines
+		td,
+	.custom-table-width-expend-stripe
+		.ivu-table-body
+		.custom-table-odd-lines
+		+ tr:not(.ivu-table-row)
+		td {
+		background-color: transparent;
+	}
+
+	// 表格双数行背景
+	.ivu-table-stripe .ivu-table-body tr:nth-child(2n) td,
+	.ivu-table-stripe .ivu-table-fixed-body tr:nth-child(2n) td,
+	.custom-table-width-expend-stripe .custom-table-even-lines td,
+	.custom-table-width-expend-stripe
+		.custom-table-even-lines
+		+ tr:not(.ivu-table-row)
+		td {
+		@include set-theme {
+			background-color: rgba(
+				get-themed-variable('color-theme-primary'),
+				0.05
+			);
+		}
+	}
+
+	// 表格默认样式
+	.ivu-table-default {
+		th {
+			border: none;
+		}
+	}
+
+	.ivu-table {
+		width: 100%;
+		background-color: transparent !important;
+
+		@include set-skin {
+			// background-color: get-bg-changed-variable(
+			// 	'color-container-bg-default'
+			// );
+			color: get-bg-changed-variable('color-text-primary');
+		}
+
+		// 表格底部，右侧边框
+		&:before,
+		&:after {
+			background-color: $color-grey-15 !important;
+		}
+
+		th {
+			height: 32px;
+			padding: 0;
+
+			@include set-skin {
+				color: get-bg-changed-variable('table-head-color');
+				background-color: get-bg-changed-variable('table-head-bg');
+			}
+		}
+
+		td {
+			height: auto;
+			padding: 8px 0;
+			line-height: 22px;
+			background-color: $transparent;
+		}
+
+		// 设置行底色，防止固定列 hover 时透出下层内容
+		.ivu-table-row {
+			background-color: transparent !important;
+		}
+
+		// 多选框
+		.ivu-checkbox-wrapper {
+			margin: 0;
+		}
+
+		// 行悬停背景和高亮背景
+		tr.ivu-table-row-highlight td,
+		tr.ivu-table-row-hover td {
+			@include set-theme {
+				background-color: get-themed-variable(
+					'color-theme-highlight'
+				) !important;
+			}
+		}
+	}
+	.ivu-table-border {
+		td,
+		th {
+			@include set-skin {
+				border-right: 1px solid
+					get-bg-changed-variable('color-border-default');
+			}
+		}
+		td {
+			@include set-skin {
+				border-bottom: 1px solid
+					get-bg-changed-variable('color-border-default');
+			}
+		}
+	}
+
+	// ----------------------  筛选条件  ---------------------------
+	// 顺序筛选图标颜色
+	.ivu-table-sort i {
+		@include set-skin {
+			color: get-bg-changed-variable('table-head-color');
+		}
+
+		&.on {
+			@include set-theme {
+				color: get-themed-variable('color-theme-primary');
+			}
+		}
+	}
+
+	.ivu-table-filter .ivu-icon-ios-funnel {
+		margin-left: 4px;
+		font-size: 18px;
+
+		@include set-skin {
+			color: get-bg-changed-variable('table-head-color');
+		}
+
+		&::before {
+			content: '\F33D';
+		}
+
+		// 选中状态
+		&.on {
+			@include set-theme {
+				color: get-themed-variable('color-theme-primary');
+			}
+		}
+	}
+
+	// 筛选条件下拉选项
+	.ivu-table-filter-list {
+		padding-top: 4px;
+
+		.ivu-table-filter-select-item {
+			@include set-skin {
+				color: get-bg-changed-variable('color-text-primary');
+			}
+
+			&:hover {
+				@include set-skin {
+					background-color: get-bg-changed-variable(
+						'color-container-bg-popup-highlight'
+					);
+				}
+			}
+		}
+
+		.ivu-table-filter-select-item-selected,
+		.ivu-table-filter-select-item-selected:hover {
+			@include set-theme {
+				color: #fff;
+				background-color: get-themed-variable('color-theme-primary');
+				border-color: get-themed-variable('color-theme-primary');
+			}
+		}
+
+		ul {
+			padding-bottom: 4px;
+			max-height: 340px;
+		}
+	}
+
+	// 表格里的操作按钮间距
+	.ivu-table-cell-slot .ivu-btn {
+		padding: 0;
+		margin-left: 16px;
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	// 可展开行的展开收起图标
+	.ivu-table-cell-expand .ivu-icon-ios-arrow-forward {
+		@include set-skin {
+			color: get-bg-changed-variable('icon-font-color');
+		}
+
+		&::before {
+			content: '\F341';
+		}
+	}
+
+	// 无数据提示
+	.ivu-table .ivu-table-tip td {
+		font-size: $font-size-base;
+		@include height-lh(80px);
+
+		@include set-skin {
+			color: get-bg-changed-variable('color-text-placeholder');
+		}
+	}
+
+	// ------------------ 固定列  -----------------
+	// 固定列阴影
+	.ivu-table-fixed {
+		@include set-skin {
+			box-shadow: get-bg-changed-variable('table-fixed-left-shadow');
+		}
+	}
+
+	.ivu-table-fixed-right {
+		@include set-skin {
+			box-shadow: get-bg-changed-variable('table-fixed-right-shadow');
+		}
+	}
+}

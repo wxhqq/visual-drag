@@ -1,0 +1,49 @@
+// ----------------------------------  消息组件 -----------------------
+.ivu-message-notice-content {
+	font-size: 16px;
+	padding: 12px 24px;
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+		background-color: get-bg-changed-variable('color-container-bg-popup');
+		box-shadow: get-bg-changed-variable('shadow-popup');
+	}
+
+	.ivu-icon {
+		font-size: 24px;
+		margin-right: 8px;
+	}
+}
+
+// close bth
+.ivu-message-notice-close {
+	top: 14px;
+
+	i.ivu-icon {
+		@include set-background {
+			color: get-bg-changed-variable('icon-font-color') !important;
+		}
+	}
+}
+
+// info
+.ivu-message-info .ivu-icon,
+.ivu-message-loading .ivu-icon {
+	@include set-theme {
+		color: get-themed-variable('color-theme-secondary');
+	}
+}
+
+// success
+.ivu-message-success .ivu-icon {
+	color: $color-func-success;
+}
+
+// error
+.ivu-message-error .ivu-icon {
+	color: $color-func-danger;
+}
+
+// warning
+.ivu-message-warning .ivu-icon {
+	color: $color-func-warning;
+}

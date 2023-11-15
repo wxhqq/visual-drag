@@ -1,0 +1,132 @@
+// -----------------------  Color ------------------------
+$transparent: rgba(255, 255, 255, 0);
+
+// 灰度 -  常用于浅色背景
+$color-grey-4: #f6f7fb;
+$color-grey-10: #f2f3f8;
+$color-grey-15: #e5e8ef;
+$color-grey-25: #c9cdd4;
+$color-grey-35: #9d9d9d;
+
+// 灰度 -  常用于深色背景
+$color-grey-96: #0a0a0a;
+$color-grey-92: #141414;
+$color-grey-88: #1f1f1f;
+$color-grey-82: #2e2e2e;
+$color-grey-75: #404040;
+$color-grey-65: #595959;
+
+// 黑色
+$color-black-100: rgba(0, 0, 0, 1);
+$color-black-85: rgba(0, 0, 0, 0.85);
+$color-black-65: rgba(0, 0, 0, 0.65);
+$color-black-50: rgba(0, 0, 0, 0.5);
+$color-black-45: rgba(0, 0, 0, 0.45);
+$color-black-25: rgba(0, 0, 0, 0.25);
+$color-black-10: rgba(0, 0, 0, 0.1);
+
+// 白色
+$color-white-100: rgba(255, 255, 255, 1);
+$color-white-85: rgba(255, 255, 255, 0.85);
+$color-white-65: rgba(255, 255, 255, 0.65);
+$color-white-45: rgba(255, 255, 255, 0.45);
+$color-white-25: rgba(255, 255, 255, 0.25);
+
+// 浅色背景下字体颜色
+$light-font-color-85: #1d2129;
+$light-font-color-65: #4e5969;
+$light-font-color-45: #86909c;
+$light-font-color-25: #c9cdd4;
+
+// 功能色
+$color-func-success: #4caf50;
+$color-func-caution: #ffdc00;
+$color-func-warning: #ff8f00;
+$color-func-danger: #da000e;
+$color-func-waiting: #3996ff;
+
+// 危险按钮色
+$btn-error-bg: rgba(218, 0, 14, 1); // #da000e
+$btn-error-hover-bg: rgba(229, 76, 85, 1); // #e54c55
+$btn-error-active-bg: rgba(174, 0, 11, 1); // #ae000b
+$btn-error-disabled-bg: rgba(218, 0, 14, 0.4); // error-bg 40%
+
+// 字体大小
+$font-size-base: 14px;
+$font-size-small: 12px;
+$font-size-large: 16px;
+
+// 断点类型
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1600px;
+$breakpoint-xxxl: 1920px;
+
+// 省略号行数
+$ellipsis-list: (1, 2, 3, 4);
+
+// 层级
+$header-menu-zindex: 10; // header 与 menu 同级，否则需要设置向上的间距
+$menu-trigger-zindex: 11; // 展开收起触发器
+$spin-zindex: 1001;
+$modal-zindex: 1100;
+$activate-zindex: 999999; // 使激活处于最高层级
+
+// 标签颜色(威胁等级等)
+$level-tag-color: $color-white-100;
+
+// -------------------  可视管理  ------------------
+$visual-page-bg: #050b0d; // 蓝 #00122C
+$visual-card-gradient: #0a8a7f; // 蓝 #0660B5
+$visual-title-color: #6eccbf; // 蓝 #96CCE8
+$visual-theme-light-color: #ccffff; // 蓝 #DCECF5
+$visual-theme-shadow-color: #6eccbf; // 蓝 #96CCE8
+$visual-theme-text-color: #24d5c7; // 默认文本字体颜色 蓝 #4397CF
+$visual-theme-dashboard-shadow: #111921; // 仪表盘上文字阴影 蓝 #05203D
+
+// 组件相关
+$visual-select: rgba(9, 140, 132, 1); // 蓝 rgba(33, 124, 195, 1)
+$visual-select-hover: rgba(13, 71, 72, 1); // 蓝 rgba(7, 45, 89, 1)
+$visual-select-shadow: rgba(16, 48, 53, 1); // 蓝 rgba(1, 27, 64, 1)
+
+// 模块相关
+$visual-assets-ip-usage: rgba(6, 161, 148, 1); // 蓝 rgba(33, 124, 195, 1)
+$visual-assets-ip-usage-border: rgba(
+	12,
+	94,
+	92,
+	0.5
+); // 蓝 rgba(24, 72, 109, 0.5)
+
+// 不随蓝绿变化而变化的变量
+$visual-warning: #feba26; // 警告类
+$visual-warning-shadow: rgba(255, 221, 121, 0.5);
+$visual-rank-first: #feba26; // 排名第一
+
+// 数据集维度和度量区分颜色
+$dimension-color: #1c83fc;
+$measure-color: #5ed310;
+// ------------------------------卡片 图标色卡--------------------------------
+$CHART_COLORS_ORDINARY: (
+	rgba(7, 144, 135, 1),
+	rgba(109, 141, 206, 1),
+	rgba(52, 144, 41, 1),
+	rgba(57, 200, 190, 1),
+	rgba(22, 67, 157, 1),
+	rgba(186, 228, 112, 1),
+	rgba(245, 184, 71, 1),
+	rgba(117, 52, 4, 1),
+	rgba(235, 183, 13, 1),
+	rgba(255, 122, 128, 1),
+	rgba(115, 89, 3, 1),
+	rgba(230, 28, 37, 1),
+	rgba(255, 190, 140, 1),
+	rgba(117, 3, 9, 1),
+	rgba(255, 225, 125, 1)
+);
+// 统计数量颜色 一般用在设备管理中的数量统计
+$STAT_NUMS_COLORS: (
+	rgba(7, 144, 135, 1),
+	rgba(22, 67, 157, 1),
+	rgba(57, 200, 190, 1),
+	rgba(109, 141, 206, 1)
+);

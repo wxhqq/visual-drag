@@ -1,0 +1,134 @@
+//  -------------------------  穿梭框  ----------------
+.ivu-transfer-list {
+	@include size(320px);
+
+	.ivu-checkbox-wrapper {
+		margin-right: 0;
+	}
+}
+
+// header
+.ivu-transfer-list-header {
+	height: 40px;
+	padding: 8px 10px;
+	border-radius: 0;
+	border-bottom: none;
+	@include set-background {
+		color: get-bg-changed-variable('table-head-color');
+		border-color: get-bg-changed-variable('color-border-default');
+		background: get-bg-changed-variable('table-head-bg');
+	}
+}
+
+// body
+.ivu-transfer-list-body {
+	border-radius: 0;
+	@include set-background {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+}
+
+// with search
+.ivu-transfer-list-body-with-search {
+	padding-top: 40px; // 32 + 8
+
+	// input
+	.ivu-input-small {
+		padding: 5px 8px;
+		@include height-lh(32px);
+	}
+
+	// input icon
+	.ivu-input-icon {
+		font-size: 18px;
+		line-height: 32px;
+		@include size(32px);
+		@include set-background {
+			color: get-bg-changed-variable('icon-font-disabled-color');
+		}
+	}
+
+	// content
+	.ivu-transfer-list-content {
+		padding: 8px 0 0;
+	}
+}
+
+.ivu-transfer-list-content-item {
+	height: 40px;
+	padding: 8px 10px;
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+		border-bottom: 1px solid get-bg-changed-variable('color-border-default');
+	}
+	// reset
+	&:nth-last-child(2) {
+		border-bottom: none;
+	}
+
+	&:hover {
+		@include set-theme {
+			background: get-themed-variable('color-theme-highlight');
+		}
+	}
+
+	// text
+	> span {
+		padding-left: 12px; // 12 + 8 = 20
+	}
+}
+.ivu-transfer-list-content-item-disabled {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+.ivu-transfer-list-content-not-found {
+	margin-top: 10px;
+	@include set-background {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+// 穿梭按钮
+.ivu-transfer-operation {
+	// icon
+	.ivu-icon {
+		vertical-align: 0 !important;
+	}
+
+	.ivu-btn {
+		padding: 6px;
+		@include size(32px);
+
+		&:first-child {
+			margin-bottom: 8px;
+		}
+	}
+
+	// the same to button default disabled
+	.ivu-btn-primary[disabled] {
+		@include set-background {
+			color: get-bg-changed-variable('color-text-disable');
+			border-color: get-bg-changed-variable('color-border-default');
+			background-color: get-bg-changed-variable(
+				'color-container-bg-disable'
+			);
+		}
+	}
+}
+
+.ivu-transfer {
+	//主内容
+	.ivu-transfer-list-body {
+		padding-top: 48px;
+	}
+
+	//footer 定位至头部
+	.ivu-transfer-list-footer {
+		padding: 8px;
+		position: relative;
+		top: -275px;
+		border: none;
+	}
+}

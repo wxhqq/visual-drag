@@ -1,0 +1,18 @@
+// -------------------------  标签  ---------------------
+.ivu-tag {
+	padding: 0 4px;
+	border-radius: 4px;
+	font-size: $font-size-base;
+	@include height-lh(24px);
+	@include set-background {
+		border: none;
+		background-color: get-bg-changed-variable('tag-bg');
+	}
+
+	.ivu-icon-ios-close,
+	.ivu-tag-text {
+		@include set-background {
+			color: get-bg-changed-variable('color-text-primary');
+		}
+	}
+}

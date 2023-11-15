@@ -1,0 +1,707 @@
+// ------------------  页面  --------------------------
+//  页面包裹元素，包裹导航及页面内容
+.page {
+	position: relative;
+	height: 100%;
+	padding: 0 16px;
+	@include flex-dir(column);
+	overflow: hidden;
+}
+
+// 页面内容区
+.page-content {
+	position: relative;
+	flex: 1;
+	padding: 32px 32px 0; // 不带分页的内边距
+	overflow-y: auto;
+
+	@include set-background {
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+// 带分页组件的内容区
+.page-content.grid-list {
+	padding: 16px 16px 0;
+	overflow-y: auto !important;
+
+	.ivu-page {
+		margin: 24px 0 20px;
+		text-align: right;
+	}
+}
+
+// 列表左下侧分页器
+.bottom-right-pager {
+	margin: 24px 0 20px;
+	text-align: right;
+}
+
+// 页面存在tab 菜单时
+.tab-page-wrapper {
+	flex: 1;
+	overflow: hidden;
+	@include flex-dir(column);
+}
+
+// 带侧边 tabs 的内容
+.page .has-sidebar-tabs {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+// -----------------------  侧边标签页 tabs  ----------------------
+.bolean-sidebar-tabs {
+	@include size(128px, 100%);
+
+	li {
+		cursor: pointer;
+		font-size: 14px;
+		transition: all 0.2s;
+		@include size(100%, 40px);
+		@include flex-justify-align(center, center);
+
+		@include set-background {
+			color: get-bg-changed-variable('color-text-primary');
+			background-color: get-bg-changed-variable('bolean-tabs-item-bg');
+		}
+
+		&:hover {
+			font-weight: bold;
+
+			@include set-theme {
+				color: get-themed-variable('color-theme-secondary');
+			}
+		}
+
+		// 每项间距
+		&:not(:first-child) {
+			margin-top: 4px;
+		}
+
+		// 选中状态
+		&.active {
+			font-weight: bold;
+
+			@include set-theme {
+				color: get-themed-variable('color-theme-secondary');
+				border-left: 4px solid
+					get-themed-variable('color-theme-primary');
+				background-color: get-themed-variable(
+					'color-theme-tabs-active'
+				);
+			}
+		}
+	}
+}
+
+// -----------------  常用字体  -----------------
+// 字体大小 例如：fs-16
+$fs-list: (12, 14, 16, 20, 24, 26, 28, 32, 36, 40, 48, 56, 60);
+
+@each $fs in $fs-list {
+	.fs-#{$fs} {
+		font-size: #{$fs}px !important;
+	}
+	.fs-vw-#{$fs} {
+		font-size: vw($fs) !important;
+	}
+	.fs-vh-#{$fs} {
+		font-size: vh($fs) !important;
+	}
+}
+
+// 主要用作标题，表格内容，表单的输入框等
+.font-color-85 {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-crucial');
+	}
+}
+.font-color-65 {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+//主要用输入框的Pleaceholder文字字体，提示信息等
+.font-color-45 {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+}
+
+// 主要用作Disabled的文字
+.font-color-25 {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+.font-color-primary {
+	@include set-theme {
+		color: get-themed-variable('color-theme-primary');
+	}
+}
+
+.font-bold {
+	font-weight: bold;
+}
+
+.bolean-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 16px;
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+}
+
+//  -------------------  提示  ---------------------------
+.info-tip,
+.error-tip {
+	font-size: $font-size-small;
+}
+
+// 正常字体的提示文字
+.info-tip-normal,
+.error-tip-normal {
+	font-size: $font-size-base;
+}
+
+//---------------------------文本颜色-------------------------------------------
+.info-tip,
+.info-tip-normal {
+	@include set-background {
+		color: get-bg-changed-variable('color-text-disable');
+	}
+}
+
+.error-tip,
+.error-tip-normal {
+	color: $color-func-danger;
+}
+
+.dangerous-tip {
+	font-size: 14px;
+	color: $color-func-danger;
+}
+
+// -------------------  文字水平对齐 --------------------------
+.tac {
+	text-align: center;
+}
+
+.tar {
+	text-align: right;
+}
+
+.tal {
+	text-align: left;
+}
+
+// 数字输入框居左
+.number-tal {
+	.ivu-input-number-input {
+		text-align: left;
+	}
+}
+
+// 文本不换行
+.white-space-pre {
+	white-space: pre-wrap;
+}
+
+.line-height-15 {
+	line-height: 1.5;
+}
+
+// -------------------  内外边距  ------------------------------
+.mx-auto {
+	margin: 0 auto;
+}
+
+@for $i from 0 through 20 {
+	.mt-#{$i} {
+		margin-top: $i * 10px !important;
+	}
+
+	.mb-#{$i} {
+		margin-bottom: $i * 10px !important;
+	}
+
+	.mr-#{$i} {
+		margin-right: $i * 10px !important;
+	}
+
+	.ml-#{$i} {
+		margin-left: $i * 10px !important;
+	}
+
+	.mx-#{$i} {
+		margin: 0 $i * 10px !important;
+	}
+
+	.my-#{$i} {
+		margin: $i * 10px 0 !important;
+	}
+
+	.pt-#{$i} {
+		padding-top: $i * 10px !important;
+	}
+
+	.pb-#{$i} {
+		padding-bottom: $i * 10px !important;
+	}
+
+	.pl-#{$i} {
+		padding-left: $i * 10px !important;
+	}
+
+	.pr-#{$i} {
+		padding-right: $i * 10px !important;
+	}
+
+	.px-#{$i} {
+		padding: 0 $i * 10px !important;
+	}
+
+	.py-#{$i} {
+		padding: $i * 10px 0 !important;
+	}
+}
+
+// 常用间距 例如：mr-8px
+$common-margin-list: (2, 4, 6, 8, 12, 16, 24, 32);
+
+@each $item in $common-margin-list {
+	.mt-#{$item}px {
+		margin-top: #{$item}px !important;
+	}
+
+	.mr-#{$item}px {
+		margin-right: #{$item}px !important;
+	}
+
+	.mb-#{$item}px {
+		margin-bottom: #{$item}px !important;
+	}
+
+	.ml-#{$item}px {
+		margin-left: #{$item}px !important;
+	}
+}
+
+// --------------------  图标  -----------------------------
+.icon {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.icon-btn {
+	display: inline-block;
+	cursor: pointer;
+	@include size(28px, 32px);
+	text-align: center;
+	line-height: 32px;
+
+	&:hover {
+		@include set-theme {
+			color: get-themed-variable('color-theme-primary');
+		}
+	}
+}
+
+// --------------------   flex 布局  -----------------------------
+.flex-wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-nowrap {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.flex-justify-start {
+	@include flex-justify(flex-start);
+}
+
+.flex-justify-between {
+	@include flex-justify(space-between);
+}
+
+.flex-justify-center {
+	@include flex-justify(center);
+}
+
+.flex-justify-end {
+	@include flex-justify(flex-end);
+}
+
+.flex-align-items-start {
+	@include flex-align(flex-start);
+}
+
+.flex-align-items-center {
+	@include flex-align(center);
+}
+
+.flex-align-items-end {
+	@include flex-align(flex-end);
+}
+
+.flex-item-1 {
+	flex: 1;
+}
+
+// -------------------  显示 n 行  -----------------------------
+@each $count in $ellipsis-list {
+	.ellipsis-#{$count} {
+		@include ellipsis($count);
+	}
+}
+
+//  -----------------------  隐藏滚动条 ------------------------
+.hide-scroll-bar {
+	scrollbar-width: none; // 火狐
+	-ms-overflow-style: none; // IE10+
+	overflow: -moz-scrollbars-none; //firfox
+
+	&::-webkit-scrollbar {
+		width: 0;
+	}
+
+	// chrome
+}
+
+// -----------------------  侧标签页 tabs  ----------------------
+.bolean-horizontal-ivu-tabs {
+	display: flex;
+	border-bottom: 1px solid;
+
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+
+	li {
+		padding: 0 20px 8px;
+		text-align: center;
+		cursor: pointer;
+		transition: all 0.3s;
+		border-bottom: 2px solid transparent;
+
+		&.actived {
+			font-weight: bold;
+
+			@include set-theme {
+				color: get-themed-variable('color-theme-secondary');
+				border-color: get-themed-variable('color-theme-secondary');
+			}
+		}
+
+		&:hover {
+			@include set-theme {
+				color: get-themed-variable('color-theme-secondary');
+			}
+		}
+	}
+}
+
+// --------------------  表格操作处理区域 old -------------------------
+.table-operation-btns {
+	flex-wrap: wrap;
+	@include flex-justify(flex-start);
+
+	margin-bottom: 8px;
+
+	.ivu-btn:not(:first-child) {
+		margin-left: 8px;
+	}
+
+	.ivu-btn-group {
+		display: flex;
+	}
+}
+
+// --------------------  表格操作处理图标区域，例如刷新列表、列重置图标  -------------------------
+.table-operation-icons {
+	margin-bottom: 8px;
+	@include flex-justify(flex-end);
+
+	i {
+		display: inline-block;
+		min-width: 32px;
+		text-align: center;
+		cursor: pointer;
+		font-size: 20px;
+		@include height-lh(32px);
+
+		@include set-background {
+			color: get-bg-changed-variable('icon-font-color');
+		}
+	}
+
+	i:hover {
+		border-radius: 4px;
+
+		@include set-background {
+			background-color: get-bg-changed-variable('color-body-bg');
+		}
+	}
+}
+
+// -------------------- 表格筛选区域  -----------------------
+// 筛选操作区 -  输入框
+.table-filter-inputs {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+// 筛选操作区 - 按钮
+.table-filter-btns {
+	display: flex;
+	align-items: baseline;
+	margin-left: 24px;
+
+	.ivu-btn + .ivu-btn {
+		margin-left: 8px;
+	}
+}
+
+// 展开收起带背景的筛选区域宽度
+.table-filter-wrap {
+	margin-bottom: 8px;
+	padding: 8px 16px;
+	@include flex-justify-align(space-between, flex-start);
+
+	@include set-background {
+		background-color: get-bg-changed-variable(
+			'color-container-bg-wrapper-bg'
+		);
+	}
+}
+
+.alone-filter-wrap {
+	margin-bottom: 16px;
+	min-height: 64px;
+	padding: 16px 20px 0;
+	@include flex-justify();
+
+	@include set-background {
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+// -------------------- 页面提示信息、 列表提示信息  --------------------
+.page-info,
+.table-info {
+	font-size: $font-size-small;
+	vertical-align: bottom;
+	align-self: flex-end;
+
+	@include set-background {
+		color: get-bg-changed-variable('color-text-regular');
+	}
+
+	span {
+		@include set-theme {
+			color: get-themed-variable('color-theme-secondary');
+		}
+	}
+}
+
+// ---------------  威胁等级  --------------
+.level-tag {
+	display: inline-block;
+	padding: 0 14px;
+	border-radius: 12px;
+	color: $color-white-100;
+	font-weight: bold;
+	@include height-lh(24px);
+}
+
+// 日志级别 未解析
+.level-tag--1 {
+	background-color: #808080;
+}
+
+// 极低level 知识库用到
+.level-tag-0 {
+	background-color: #3996ff;
+}
+
+// 低
+.level-tag-1 {
+	color: $color-black-85;
+	background-color: $color-func-caution;
+}
+
+// 中
+.level-tag-2 {
+	background-color: $color-func-warning;
+}
+
+// 高
+.level-tag-3 {
+	background-color: $color-func-danger;
+}
+
+// -----------------------------背景颜色 文本颜色-------------------------------
+// 纯色背景  浅色系下为白色
+.pure-bg {
+	@include set-background {
+		background-color: get-bg-changed-variable('color-container-bg-default');
+	}
+}
+
+.gray-bg {
+	@include set-background {
+		background-color: get-bg-changed-variable('color-body-bg');
+	}
+}
+
+// ----------------------------  带图标的 tag ------------------
+// 一般展示列表中的状态
+.tag-with-icon {
+	min-width: 58px;
+	display: inline-block;
+	padding: 0 10px 0 4px;
+	border-radius: 12px;
+	display: inline-flex;
+	align-items: center;
+
+	@include set-background {
+		border: 1px solid get-bg-changed-variable('color-border-default');
+		background-color: get-bg-changed-variable(
+			'color-container-bg-popup-highlight'
+		);
+	}
+
+	// 文字
+	span:last-child {
+		font-size: 12px;
+		margin-left: 4px;
+
+		@include set-background {
+			color: get-bg-changed-variable('color-text-regular');
+		}
+	}
+
+	&.success {
+		background: rgba($color-func-success, 0.1);
+		border: 1px solid $color-func-success;
+
+		.icon-symbol {
+			color: $color-func-success; // 已注册图标
+		}
+	}
+}
+
+// ------------------  空数据图片  -------------------
+.no-chart-data,
+.no-list-data {
+	margin: 0 auto;
+	@include bg-cover();
+}
+
+// 同 Table 组件无数据提示保持一致
+.no-list-card-data {
+	text-align: center;
+	font-size: $font-size-base;
+	@include height-lh(80px);
+
+	@include set-background {
+		color: get-bg-changed-variable('color-text-placeholder');
+	}
+}
+
+// ---------------------------  可视化界面 tooltip --------------------------
+.visual-page-tooltip {
+	$bg-color: rgba(0, 0, 0, 0.9);
+	$placement-list: ('top', 'right', 'bottom', 'left');
+
+	@each $item in $placement-list {
+		&.ivu-tooltip-popper[x-placement^='#{$item}'] .ivu-tooltip-arrow {
+			border-#{$item}-color: $bg-color !important;
+		}
+	}
+
+	.ivu-tooltip-inner {
+		padding: 16px;
+		white-space: normal;
+		color: $color-white-85;
+		background-color: $bg-color;
+	}
+}
+
+.visual-page-poptip {
+	$bg-color: rgba(0, 0, 0, 0.9);
+	$placement-list: ('top', 'right', 'bottom', 'left');
+
+	@each $item in $placement-list {
+		&.ivu-poptip-popper[x-placement^='#{$item}'] .ivu-poptip-arrow {
+			border-#{$item}-color: $bg-color !important;
+
+			&::after {
+				border-#{$item}-color: $bg-color !important;
+			}
+		}
+	}
+
+	.ivu-poptip-inner {
+		padding: 16px;
+		white-space: normal;
+		color: $color-white-85;
+		background-color: $bg-color;
+	}
+}
+
+// ----------------------------------------深色滚动条-------------------------------------------------
+.dark-scroll-bar {
+	// 滚动条交汇处
+	::-webkit-scrollbar-corner {
+		background-color: $color-grey-92 !important;
+	}
+
+	// 滚动条内层轨道
+	::-webkit-scrollbar-track-piece {
+		padding: 0 2px;
+		background-color: $color-grey-92 !important;
+	}
+
+	// 滚动条滑块
+	::-webkit-scrollbar-thumb:horizontal,
+	::-webkit-scrollbar-thumb:vertical {
+		background-color: $color-grey-82 !important;
+	}
+
+	// 滚动条的 hover样式
+	::-webkit-scrollbar-thumb:hover {
+		background-color: $color-grey-65 !important;
+	}
+}
+.light-scroll-bar {
+	// 滚动条交汇处
+	::-webkit-scrollbar-corner {
+		background-color: $color-white-100 !important;
+	}
+
+	// 滚动条内层轨道
+	::-webkit-scrollbar-track-piece {
+		padding: 0 2px;
+		background-color: $color-white-100 !important;
+	}
+
+	// 滚动条滑块
+	::-webkit-scrollbar-thumb:horizontal,
+	::-webkit-scrollbar-thumb:vertical {
+		background-color: $color-grey-25 !important;
+	}
+
+	// 滚动条的 hover样式
+	::-webkit-scrollbar-thumb:hover {
+		background-color: $color-grey-35 !important;
+	}
+}

@@ -1,0 +1,75 @@
+// 图标 reset
+.ivu-dropdown-rel {
+	.ivu-icon-ios-arrow-down::before {
+		content: '\F33D';
+		@include set-background {
+			color: get-bg-changed-variable('icon-font-color');
+		}
+	}
+}
+
+// --- 下拉菜单 transfer to body 的时候生成一份相应主题 class 类下的样式，只需为set-background mixins 加各 true 参数即可 --------------------
+.ivu-select-dropdown {
+	margin: 0;
+	padding: 0;
+	border-radius: 2px;
+	max-height: calc(100vh - 30px) !important;
+	overflow-y: auto !important;
+	@include hide-scroll-bar();
+
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+		box-shadow: get-bg-changed-variable('shadow-popup');
+		background: get-bg-changed-variable('color-container-bg-popup');
+	}
+
+	.ivu-dropdown-menu {
+		// min-width: 120px;
+		overflow: hidden;
+	}
+}
+
+.ivu-dropdown-item {
+	padding: 0 10px;
+	@include height-lh(32px);
+
+	@include set-background(true) {
+		color: get-bg-changed-variable('color-text-primary');
+	}
+
+	// hover
+	&:hover {
+		@include set-background(true) {
+			background-color: get-bg-changed-variable(
+				'color-container-bg-popup-highlight'
+			);
+		}
+	}
+
+	// active
+	&.ivu-dropdown-item-selected,
+	&:focus,
+	&:active {
+		color: #fff;
+
+		@include set-theme() {
+			background-color: get-themed-variable('color-theme-primary');
+		}
+	}
+}
+
+// item with divider
+.ivu-dropdown-item-divided {
+	line-height: 24px;
+	@include set-background(true) {
+		border-color: get-bg-changed-variable('color-border-default');
+	}
+
+	&:before {
+		background-color: $transparent;
+	}
+}
+
+.ivu-select-dropdown .ivu-dropdown {
+	min-width: 100%;
+}
